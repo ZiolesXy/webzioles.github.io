@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Multi Fitur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: linear-gradient(to bottom right,green,white);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: block;
+            margin: 0 auto;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            transition: background-color 0.3s ease;
+        }
+        li:hover {
+            cursor: pointer;
+        }
+        #jam {
+            text-align: center;
+            font-size: 2em;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 5px solid red;
+            width: 120px;
+            margin: 0 auto;
+        }
+        .biru {
+            color: blue;
+        }
+        .js-basic {
+            margin-top: 40px;
+            padding: 20px;
+            background: linear-gradient(
+                to bottom right,
+                pink,
+                white
+            );
+            border-radius: 10px;
+        }
+        .js-basic h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .js-basic p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .js-basic li:hover{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Halaman Multi Fitur</h1>
+        
+        <button onclick="suhu()">Konversi Fahrenheit ke Celsius</button>
+        <p id="total"></p>
+        
+        <ul id="daftarSaya">
+            <li>12</li>
+            <li>23</li>
+            <li>32</li>
+            <li>44</li>
+            <li>51</li>
+        </ul>
+        <button onclick="ubahWarna()">Ubah Warna</button>
+        <br>
+        <div id="jam"></div>
+        <div class="js-basic">
+            <h2>Pembahasan Dasar JavaScript</h2>
+            <p>JavaScript adalah bahasa pemrograman yang sering digunakan untuk membuat halaman web menjadi interaktif. Beberapa fitur dasar JavaScript yang dicoba di project ini meliputi:</p>
+            <ul>
+                <li>Manipulasi DOM (Document Object Model)</li>
+                <li>Menangani peristiwa (event)</li>
+                <li>Menangani variabel, tipe data, dan operasi logika</li>
+                <li>Penggunaan fungsi</li>
+                <li>Penggunaan kondisional seperti if-else statement</li>
+                <li>Penggunaan loop seperti for dan while</li>
+            </ul>
+        </div>
+        <br>
+        <a style="text-decoration: none;" href="index.html"><button>Kembali</button></a>
+    </div>
+
+    <script>
+        function suhu() {
+            var cel = prompt("Masukkan suhu Fahrenheit");
+            var far = (cel - 32) * 5 / 9;
+            if (isNaN(far)) {
+                alert("Input tidak valid");
+            } else {
+                document.getElementById("total").innerHTML = "Jadi, " + cel + " derajat Fahrenheit adalah " + far.toFixed(2) + " derajat Celsius";
+            }
+        }
+
+        function ubahWarna() {
+            const elemenDaftar = document.querySelectorAll('#daftarSaya li');
+        
+            elemenDaftar.forEach((item, indeks) => {
+                if (indeks % 2 === 0) {
+                    item.classList.toggle('biru');
+                }
+            });
+        }
+
+        function perbaruiJam() {
+            const elemenJam = document.getElementById('jam');
+            const sekarang = new Date();
+            const jam = sekarang.getHours().toString().padStart(2, '0');
+            const menit = sekarang.getMinutes().toString().padStart(2, '0');
+            const detik = sekarang.getSeconds().toString().padStart(2, "0");
+        
+            // Perbarui tampilan jam
+            elemenJam.textContent = `${jam}:${menit}:${detik}`;
+            if (sekarang.getSeconds() % 2 === 0) {
+                elemenJam.style.borderColor = 'red';
+            } else {
+                elemenJam.style.borderColor = 'blue';
+            }
+        }
+        setInterval(perbaruiJam, 1000);
+        perbaruiJam();
+    </script>
+</body>
+</html>

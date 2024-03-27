@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Meter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:url()no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: transparent;
+            backdrop-filter: blur(2px);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px; /* tambahkan margin */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .result p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Menambahkan warna latar belakang berdasarkan skor cinta */
+        .background-red {
+            background-color: red; /* merah */
+        }
+
+        .background-pink {
+            background-color: pink; /* pink */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Love Meter</h1>
+        <div class="input-container">
+            <label for="yourName">Nama Anda:</label>
+            <input autocomplete="off" type="text" id="yourName" placeholder="Nama Anda" maxlength="20">
+            <div id="yourNameError" class="error"></div>
+        </div>
+        <div class="input-container">
+            <label for="partnerName">Nama Pasangan:</label>
+            <input autocomplete="off" type="text" id="partnerName" placeholder="Nama Pasangan" maxlength="20">
+            <div id="partnerNameError" class="error"></div>
+        </div>
+        <button onclick="calculateLove()">Hitung Cinta</button>
+        <button onclick="generateRandomName()">Buat Nama Acak</button> <!-- tambahkan tombol untuk nama acak -->
+        <div id="loveMeterResult" class="result"></div>
+        <br>
+        <a href="index.html"><button>Kembali</button></a>
+    </div>
+
+    <script>
+        function calculateLove() {
+            const yourName = document.getElementById('yourName').value.trim();
+            const partnerName = document.getElementById('partnerName').value.trim();
+
+            const yourNameError = document.getElementById('yourNameError');
+            const partnerNameError = document.getElementById('partnerNameError');
+
+            // Reset error
+            yourNameError.textContent = '';
+            partnerNameError.textContent = '';
+
+            // Validasi nama
+            if (!isValidName(yourName)) {
+                yourNameError.textContent = 'Mohon masukkan nama yang valid (huruf saja, maksimal 20 karakter)';
+                return;
+            }
+            if (!isValidName(partnerName)) {
+                partnerNameError.textContent = 'Mohon masukkan nama yang valid (huruf saja, maksimal 20 karakter)';
+                return;
+            }
+
+            const loveScore = generateLoveScore(yourName, partnerName);
+            displayLoveResult(loveScore);
+        }
+
+        function generateLoveScore(name1, name2) {
+            const combinedNames = (name1 + name2).toLowerCase();
+            let loveScore = 0;
+
+            for (let i = 0; i < combinedNames.length; i++) {
+                loveScore += combinedNames.charCodeAt(i);
+            }
+
+            loveScore %= 101; // Pastikan loveScore antara 0 dan 100
+            return loveScore;
+        }
+
+        function displayLoveResult(score) {
+            let resultText;
+            let resultClass;
+
+            if (score >= 90) {
+                resultText = "Anda cocok sekali!";
+                resultClass = 'background-pink';
+            } else if (score >= 70) {
+                resultText = "Anda memiliki hubungan yang kuat!";
+            } else if (score >= 50) {
+                resultText = "Anda kompatibel.";
+            } else if (score >= 30) {
+                resultText = "Anda memiliki beberapa perbedaan, tapi masih layak dicoba!";
+            } else {
+                resultText = "Hmm... Mungkin Anda harus mempertimbangkan kembali.";
+                resultClass = 'background-red';
+            }
+
+            const resultElement = document.getElementById('loveMeterResult');
+            resultElement.innerHTML = `<p>Skor Cinta Anda: ${score}%</p><p>${resultText}</p>`;
+            resultElement.className = 'result ' + (resultClass || ''); // Menambahkan kelas latar belakang jika ada, atau tetap menggunakan kelas result
+        }
+
+        function isValidName(name) {
+            return /^[A-Za-z\s]{1,20}$/.test(name); // Memperbolehkan spasi
+        }
+
+        function generateRandomName() {
+            const firstNames = ['John', 'Emma', 'Michael', 'Sophia', 'William', 'Olivia', 'James', 'Amelia', 'Alexander', 'Ava'];
+            const lastNames = ['Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor'];
+            const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+            const randomName = randomFirstName + ' ' + randomLastName;
+            document.getElementById('partnerName').value = randomName; // Set nilai input nama pasangan
+        }
+    </script>
+</body>
+</html>

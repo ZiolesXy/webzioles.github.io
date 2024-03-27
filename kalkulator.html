@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url(https://media.istockphoto.com/id/860696690/id/foto/pemandangan-kota.jpg?s=612x612&w=0&k=20&c=6il25uR-_NGN1z7DuGK_yueOhI-ZCv7Af7GB5JKdzHU=) no-repeat center;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      background-color: transparent;
+      backdrop-filter: blur(20px);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+
+    input, button {
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f4f4f4;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter number 1" autocomplete="off">
+    <br>
+    <input type="number" id="num2" placeholder="Enter number 2" autocomplete="off">
+    <br>
+    <button onclick="calculate('add')">Add</button>
+    <button onclick="calculate('subtract')">Subtract</button>
+    <button onclick="calculate('multiply')">Multiply</button>
+    <button onclick="calculate('divide')">Divide</button>
+    <br>
+    <p id="result">Result: </p>
+    <br>
+    <a href="index.html" style="text-decoration: none;"><button>Kembali</button></a>
+  </div>
+  <script>
+    function calculate(operation) {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let num2 = parseFloat(document.getElementById("num2").value);
+      let result;
+      
+      switch(operation) {
+        case 'add':
+          result = num1 + num2;
+          break;
+        case 'subtract':
+          result = num1 - num2;
+          break;
+        case 'multiply':
+          result = num1 * num2;
+          break;
+        case 'divide':
+          if (num2 !== 0) {
+            result = num1 / num2;
+          } else {
+            result = "Cannot divide by zero!";
+          }
+          break;
+        default:
+          result = "Invalid operation";
+      }
+
+      document.getElementById("result").innerText = "Result: " + result;
+    }
+  </script>
+</body>
+</html>

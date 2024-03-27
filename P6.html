@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select,
+        input[type="text"],
+        input[type="number"],
+        button {
+            padding: 8px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .blue-text {
+            color: blue;
+        }
+
+        .blue-bold {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Combined Document</h1>
+    </header>
+
+    <section>
+        <h2>Section 1</h2>
+        <ul id="fruitList">
+            <li>manggis</li>
+            <li>mangga</li>
+            <li>Alpukat</li>
+            <li>Sirsak</li>
+            <li>Durian</li>
+            <li>Rambutan</li>
+        </ul>
+        <div>
+            <label for="textColor">Warna Teks:</label>
+            <input type="radio" name="textColor" id="blueText" onclick="changeTextColor('blue')">Biru
+            <input type="radio" name="textColor" id="greenText" onclick="changeTextColor('green')">Hijau
+            <input type="radio" name="textColor" id="yellowText" onclick="changeTextColor('yellow')">Kuning
+        </div>
+        <div>
+            <label for="hoverColor">Warna Hover:</label>
+            <input type="radio" name="hoverColor" id="hoverBlue" onmouseover="changeHoverColor('blue')">Biru
+            <input type="radio" name="hoverColor" id="hoverGreen" onmouseover="changeHoverColor('green')">Hijau
+            <input type="radio" name="hoverColor" id="hoverYellow" onmouseover="changeHoverColor('yellow')">Kuning
+        </div>
+    </section>
+
+    <section>
+        <h2>Section 2</h2>
+        <ul id="creatureList">
+            <li>Shark</li>
+            <li>Human</li>
+            <li>Mink</li>
+            <li>Angel</li>
+            <li>Ghoul</li>
+            <li>Cyborg</li>
+        </ul>
+        <button onclick="changeDarkElementsColor()">Ubah warna elemen gelap</button>
+    </section>
+
+    <section>
+        <h2>Section 3</h2>
+        <ul id="customList">
+            <li>List1</li>
+            <li>List2</li>
+            <li>List3</li>
+            <li>List4</li>
+            <li>List5</li>
+            <li>List6</li>
+            <li>List7</li>
+            <li>List8</li>
+        </ul>
+        <div>
+            <label for="evenColor">Ubah urutan genap:</label>
+            <select id="evenColor" onchange="changeEvenListColor()">
+                <option value="blue">Biru</option>
+                <option value="red">Merah</option>
+                <option value="yellow">Kuning</option>
+            </select>
+        </div>
+        <div>
+            <label for="oddColor">Ubah urutan ganjil:</label>
+            <select id="oddColor" onchange="changeOddListColor()">
+                <option value="purple">Ungu</option>
+                <option value="green">Hijau</option>
+                <option value="pink">Pink</option>
+            </select>
+        </div>
+    </section>
+
+    <section>
+        <h2>Section 4</h2>
+        <ul id="generatedList"></ul>
+        <div>
+            <label for="text">Teks:</label>
+            <input type="text" id="text" placeholder="Masukkan teks">
+        </div>
+        <div>
+            <label for="quantity">Jumlah:</label>
+            <input type="number" id="quantity" placeholder="Masukkan jumlah" min="1" value="1">
+        </div>
+        <button onclick="generateListItems()">Generate Item</button>
+        <div>
+            <h3>Warna Teks</h3>
+            <input onclick="changeTextColor('blue')" type="radio" name="color" id="blue">Biru
+            <input onclick="changeTextColor('red')" type="radio" name="color" id="red">Merah
+            <input onclick="changeTextColor('green')" type="radio" name="color" id="green">Hijau
+        </div>
+        <div>
+            <h3>Warna Hover</h3>
+            <input onmouseover="changeHoverColor('blue')" type="radio" name="hoverColor" id="hoverBlue">Biru
+            <input onmouseover="changeHoverColor('red')" type="radio" name="hoverColor" id="hoverRed">Merah
+            <input onmouseover="changeHoverColor('green')" type="radio" name="hoverColor" id="hoverGreen">Hijau
+        </div>
+    </section>
+
+    <section>
+        <h2>Section 5</h2>
+        <div id="container">
+            <form id="addItemForm">
+                <label for="itemName">Nama Barang:</label>
+                <input type="text" id="itemName" required>
+                <label for="itemWeight">Berat (kg):</label>
+                <input type="number" id="itemWeight" required>
+                <button type="button" onclick="addItem()">Tambah Data</button>
+            </form>
+            <table id="itemTable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Barang</th>
+                        <th>Berat (kg)</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+        <a href="index.html"><button>Kembali</button></a>
+    </section>
+
+    <script>
+        function changeTextColor(color) {
+            var elements = document.querySelectorAll("#fruitList li, #generatedList li");
+            elements.forEach(function (element) {
+                element.style.color = color;
+            });
+        }
+
+        function changeHoverColor(color) {
+            var elements = document.querySelectorAll("#fruitList li, #generatedList li");
+            elements.forEach(function (element) {
+                element.addEventListener("mouseover", function () {
+                    element.style.color = color;
+                });
+                element.addEventListener("mouseout", function () {
+                    element.style.color = "";
+                });
+            });
+        }
+
+        function changeDarkElementsColor() {
+            var darkElements = document.querySelectorAll("#creatureList li:nth-child(odd)");
+            darkElements.forEach(function (element) {
+                element.classList.toggle("blue-bold");
+            });
+        }
+
+        function changeEvenListColor() {
+            var color = document.getElementById("evenColor").value;
+            var evenElements = document.querySelectorAll("#customList li:nth-child(even)");
+            evenElements.forEach(function (element) {
+                element.style.color = color;
+            });
+        }
+
+        function changeOddListColor() {
+            var color = document.getElementById("oddColor").value;
+            var oddElements = document.querySelectorAll("#customList li:nth-child(odd)");
+            oddElements.forEach(function (element) {
+                element.style.color = color;
+            });
+        }
+
+        function generateListItems() {
+            var textInput = document.getElementById("text").value;
+            var quantityInput = parseInt(document.getElementById("quantity").value);
+
+            var list = document.getElementById("generatedList");
+            list.innerHTML = ""; // Clear previous list items
+
+            for (var i = 1; i <= quantityInput; i++) {
+                var listItem = document.createElement("li");
+                listItem.textContent = textInput + " " + i;
+                list.appendChild(listItem);
+            }
+        }
+
+        function addItem() {
+            var itemName = document.getElementById("itemName").value;
+            var itemWeight = parseFloat(document.getElementById("itemWeight").value);
+
+            var table = document.getElementById("itemTable");
+            var rowCount = table.rows.length;
+
+            var row = table.insertRow(rowCount);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            cell1.innerHTML = rowCount;
+            cell2.innerHTML = itemName;
+
+            if (itemWeight > 5) {
+                row.style.backgroundColor = 'red';
+            }
+
+            cell3.innerHTML = itemWeight;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Hapus';
+            deleteButton.onclick = function () {
+                deleteRow(row.rowIndex);
+            };
+
+            cell4.appendChild(deleteButton);
+
+            // Reset form fields
+            document.getElementById('itemName').value = '';
+            document.getElementById('itemWeight').value = '';
+        }
+
+        function deleteRow(rowNum) {
+            var table = document.getElementById('itemTable');
+            table.deleteRow(rowNum);
+
+            // Update row numbers in the table
+            for (var i = rowNum; i < table.rows.length; i++) {
+                table.rows[i].cells[0].innerHTML = i;
+            }
+        }
+    </script>
+</body>
+
+</html>
