@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background:linear-gradient(to right, cyan, red) ;
+        }
+
+        #formTambahBuku, #daftarBuku {
+        background: white;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        input[type="text"] {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: block;
+        width: 300px;
+        }
+
+        button {
+        padding: 10px 20px;
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+        button:hover {
+        background-color: #004494;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Sederhana</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Sistem Manajemen Perpustakaan</h1>
+    <div id="formTambahBuku">
+        <h2>Tambah Buku</h2>
+        <input type="text" id="judul" placeholder="Judul Buku">
+        <input type="text" id="penulis" placeholder="Penulis Buku">
+        <input type="text" id="isbn" placeholder="ISBN Buku">
+        <button onclick="tambahBuku()">Tambah Buku</button>
+        <button><a style="text-decoration: none; color: white;" href="index.html">Kembali</a></button>
+    </div>
+    <div id="daftarBuku">
+        <h2>Daftar Buku</h2>
+        <ul id="listBuku"></ul>
+    </div>
+    <script>
+        class Buku {
+    constructor(judul, penulis, isbn) {
+        this.judul = judul;
+        this.penulis = penulis;
+        this.isbn = isbn;
+    }
+}
+
+class Perpustakaan {
+    constructor() {
+        this.koleksiBuku = [];
+    }
+
+    tambahBuku(buku) {
+        this.koleksiBuku.push(buku);
+        this.updateDaftarBuku();
+    }
+
+    updateDaftarBuku() {
+        const listBuku = document.getElementById('listBuku');
+        listBuku.innerHTML = '';
+        this.koleksiBuku.forEach(buku => {
+            const item = document.createElement('li');
+            item.textContent = `${buku.judul} oleh ${buku.penulis} (ISBN: ${buku.isbn})`;
+            listBuku.appendChild(item);
+        });
+    }
+}
+
+const perpustakaan = new Perpustakaan();
+
+function tambahBuku() {
+    const judul = document.getElementById('judul').value;
+    const penulis = document.getElementById('penulis').value;
+    const isbn = document.getElementById('isbn').value;
+    const buku = new Buku(judul, penulis, isbn);
+    perpustakaan.tambahBuku(buku);
+}
+
+document.getElementById('judul').value = '';
+document.getElementById('penulis').value = '';
+document.getElementById('isbn').value = '';
+
+    </script>
+</body>
+</html>
