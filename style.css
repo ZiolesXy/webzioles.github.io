@@ -124,14 +124,19 @@ nav ul li a:hover:after {
 .kegemaran{
     background: #101010;
     width: 100%;
-    padding: 100px 0px;
+    height: 100%;
+}
+.kartu-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow-x: scroll;
 }
 .judul h2{
     color: white;
     font-size: 75px;
     width: 1130px;
-    margin: 30px auto;
-    text-align: center;     
+    text-align: center;
 }
 .box{
     display: flex;
@@ -181,4 +186,16 @@ h5{
 .kartu .tombol:hover{
     background-color: transparent;
     border: 2px solid orange;
+}
+
+/*Bagian Footer*/
+footer{
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(to right, #00093c, #2d0b00);
+    color: #fff;
+    padding: 100px 0 30px;
+    border-top-left-radius: 125px;
+    font-size: 13px;
+    line-height: 20px;
 }
