@@ -132,6 +132,11 @@ nav ul li a:hover:after {
     display: flex;
     overflow-x: scroll;
 }
+.judul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .judul h2{
     color: white;
     font-size: 75px;
@@ -223,4 +228,37 @@ footer{
 .email-id{
     width: fit-content;
     
+}
+ul li{
+    list-style-type: none;
+    color: #fff;
+}
+form{
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+form #logo-email{
+    font-size: 18px;
+    margin-right: 10px;
+}
+form input{
+    width: 100%;
+    background: transparent;
+    color: #ccc;
+    border: 0;
+    outline: none;
+}
+form button{
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+form button #logo-button{
+    font-size: 16px;
+    color: #ccc;
 }
