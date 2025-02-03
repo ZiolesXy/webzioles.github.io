@@ -38,8 +38,5 @@ document.getElementById("den-btn").addEventListener("click", function () {
 
 // Tambahkan ini di bagian akhir script.js
 document.getElementById("exit-btn").addEventListener("click", function() {
-    // Ganti dengan salah satu opsi di bawah
-    window.location.href = "/"; // Opsi 1: Ke root website
-    // window.location.href = "../index.html"; // Opsi 2: Jika ada subfolder
-    // window.history.back(); // Opsi 3: Kembali ke halaman sebelumnya
+    window.location.href = "/webzioles.github.io";
 });
