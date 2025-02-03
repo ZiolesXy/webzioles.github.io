@@ -3,20 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base64 Enkripsi dan Dekripsi</title>
+    <title>Base64 Encoder/Decoder</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Base64 Enkripsi & Dekripsi</h1>
-        <textarea id="inputText" placeholder="Masukkan teks di sini"></textarea>
-        <div class="buttons">
-            <button id="encryptButton">Enkripsi</button>
-            <a class="back" href="https://ziolesxy.github.io/webzioles.github.io/"><button>Kembali</button></a>
-            <button id="decryptButton">Dekripsi</button>
+        <h1>Base64 Encoder/Decoder</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label class="input-label">Input Text:</label>
+                <textarea 
+                    class="custom-input" 
+                    placeholder="Masukkan teks di sini..."
+                    id="inputText"
+                ></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button class="action-btn" id="encryptButton">Enkripsi</button>
+                <button class="action-btn" id="decryptButton">Dekripsi</button>
+            </div>
         </div>
-        <textarea id="outputText" placeholder="Hasil akan muncul di sini" readonly></textarea>
+
+        <div class="output-section">
+            <label class="input-label">Hasil:</label>
+            <textarea 
+                class="custom-input output-content" 
+                id="outputText"
+                readonly
+                placeholder="Hasil akan muncul di sini..."
+            ></textarea>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
