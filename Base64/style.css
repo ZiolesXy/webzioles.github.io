@@ -104,12 +104,27 @@ h1 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.action-btn:nth-child(2) {
-    background: #ff6b6b;
+.action-btn#en-btn{
+    background: green;
 }
 
-.action-btn:nth-child(2):hover {
-    background: #ff5757;
+.action-btn#en-btn:hover{
+    background: lime;
+}
+
+.action-btn#exit-btn{
+    background: blue;
+}
+.action-btn#exit-btn:hover{
+    background: cyan;
+}
+
+.action-btn#den-btn {
+    background: red;
+}
+
+.action-btn#den-btn:hover {
+    background: magenta;
 }
 
 @media (max-width: 768px) {

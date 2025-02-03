@@ -1,4 +1,4 @@
-document.getElementById("encryptButton").addEventListener("click", function () {
+document.getElementById("en-btn").addEventListener("click", function () {
     const inputText = document.getElementById("inputText").value;
     const outputField = document.getElementById("outputText");
     
@@ -17,7 +17,7 @@ document.getElementById("encryptButton").addEventListener("click", function () {
     }
 });
 
-document.getElementById("decryptButton").addEventListener("click", function () {
+document.getElementById("den-btn").addEventListener("click", function () {
     const inputText = document.getElementById("inputText").value;
     const outputField = document.getElementById("outputText");
     
