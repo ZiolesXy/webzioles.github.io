@@ -1,3 +1,4 @@
+// Enkripsi
 document.getElementById("en-btn").addEventListener("click", function () {
     const inputText = document.getElementById("inputText").value;
     const outputField = document.getElementById("outputText");
@@ -17,6 +18,7 @@ document.getElementById("en-btn").addEventListener("click", function () {
     }
 });
 
+// Dekripsi
 document.getElementById("den-btn").addEventListener("click", function () {
     const inputText = document.getElementById("inputText").value;
     const outputField = document.getElementById("outputText");
@@ -36,7 +38,29 @@ document.getElementById("den-btn").addEventListener("click", function () {
     }
 });
 
-// Tambahkan ini di bagian akhir script.js
+// Back button
 document.getElementById("exit-btn").addEventListener("click", function() {
     window.location.href = "/webzioles.github.io";
+});
+
+// Copy hasil
+document.getElementById("copy-btn").addEventListener("click", function() {
+    const outputText = document.getElementById("outputText");
+    if (outputText.value.trim() === "") {
+        alert("Tidak ada hasil untuk disalin!");
+        return;
+    }
+    
+    navigator.clipboard.writeText(outputText.value)
+        .then(() => alert("Teks berhasil disalin!"))
+        .catch(err => alert("Gagal menyalin teks!"));
+});
+
+// Paste dari clipboard
+document.getElementById("paste-btn").addEventListener("click", function() {
+    navigator.clipboard.readText()
+        .then(text => {
+            document.getElementById("inputText").value = text;
+        })
+        .catch(err => alert("Gagal membaca teks dari clipboard!"));
 });

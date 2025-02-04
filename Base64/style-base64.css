@@ -34,14 +34,14 @@ h1 {
     font-size: 2.5em;
 }
 
-.input-group {
-    position: relative;
-    margin-bottom: 30px;
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .input-label {
-    display: block;
-    margin-bottom: 10px;
     color: #2d3436;
     font-weight: 500;
     font-size: 1.1em;
@@ -72,14 +72,6 @@ h1 {
     border: 2px solid #eee;
 }
 
-.output-content {
-    color: #2d3436;
-    font-size: 1em;
-    line-height: 1.6;
-    white-space: pre-wrap;
-    background: transparent;
-}
-
 .button-group {
     display: flex;
     gap: 15px;
@@ -91,7 +83,6 @@ h1 {
     padding: 15px 25px;
     border: none;
     border-radius: 8px;
-    background: #4ecdc4;
     color: white;
     font-size: 1em;
     cursor: pointer;
@@ -99,33 +90,24 @@ h1 {
 }
 
 .action-btn:hover {
-    background: #45b7b0;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.action-btn#en-btn{
-    background: green;
-}
+#en-btn { background: green; }
+#en-btn:hover { background: lime; }
 
-.action-btn#en-btn:hover{
-    background: lime;
-}
+#exit-btn { background: blue; }
+#exit-btn:hover { background: cyan; }
 
-.action-btn#exit-btn{
-    background: blue;
-}
-.action-btn#exit-btn:hover{
-    background: cyan;
-}
+#den-btn { background: red; }
+#den-btn:hover { background: magenta; }
 
-.action-btn#den-btn {
-    background: red;
-}
+#paste-btn { background: #a55eea; }
+#paste-btn:hover { background: #c28ff0; }
 
-.action-btn#den-btn:hover {
-    background: magenta;
-}
+#copy-btn { background: #4ecdc4; }
+#copy-btn:hover { background: #45b7b0; }
 
 @media (max-width: 768px) {
     .container {
@@ -139,4 +121,4 @@ h1 {
     .button-group {
         flex-direction: column;
     }
-}   
+}

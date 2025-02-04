@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Base64 Encoder/Decoder</title>
     <link rel="stylesheet" href="style-base64.css">
+    <style>
+        
+    </style>
 </head>
 <body>
     <div class="container">
@@ -12,7 +15,10 @@
         
         <div class="input-section">
             <div class="input-group">
-                <label class="input-label">Input Text:</label>
+                <div class="label-container">
+                    <label class="input-label">Input Text:</label>
+                    <button class="action-btn" id="paste-btn">Paste</button>
+                </div>
                 <textarea 
                     class="custom-input" 
                     placeholder="Masukkan teks di sini..."
@@ -28,7 +34,10 @@
         </div>
 
         <div class="output-section">
-            <label class="input-label">Hasil:</label>
+            <div class="label-container">
+                <label class="input-label">Hasil:</label>
+                <button class="action-btn" id="copy-btn">Copy</button>
+            </div>
             <textarea 
                 class="custom-input output-content" 
                 id="outputText"
@@ -37,7 +46,9 @@
             ></textarea>
         </div>
     </div>
-
     <script src="script-base64.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
