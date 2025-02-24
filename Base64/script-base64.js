@@ -13,7 +13,7 @@ document.getElementById("en-btn").addEventListener("click", function () {
         const numericStr = convertToNumeric(inputText);
         const encodedText = btoa(numericStr);
         const orien = btoa(inputText);
-        outputField.value = encodedText;
+        outputField.value = orien;
     } catch (error) {
         alert("Terjadi kesalahan saat enkripsi!");
         outputField.value = "";
@@ -36,7 +36,7 @@ document.getElementById("den-btn").addEventListener("click", function () {
         const decodedText = convertNumericToText(numericStr);
         const lsls = convertNumericToText(inputText);
         const oriden = atob(inputText);
-        outputField.value = decodedText;
+        outputField.value = oriden;
     } catch (e) {
         alert("Teks tidak valid untuk dekripsi!");
         outputField.value = "";
